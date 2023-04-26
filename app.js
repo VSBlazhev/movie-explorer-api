@@ -48,5 +48,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errHandler);
 app.listen(PORT, () => {
-  console.log('listening');
 });
