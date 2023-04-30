@@ -13,7 +13,7 @@ const auth = require('./middlewares/auth');
 const errHandler = require('./middlewares/errHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_PRODUCTION = 'mongodb://localhost:27017/bitfilmsdbLOCAL' } = process.env;
 
 const { loginValidation, createUserValidation } = require('./middlewares/userValidation');
 const NotFoundError = require('./errors/notFoundErr');
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect(DB_PRODUCTION);
 
 app.use(requestLogger);
 
@@ -36,12 +36,12 @@ app.get('/crash-test', () => {
 
 app.post('/signin', loginValidation, loginUser);
 app.post('/signup', createUserValidation, createUser);
-app.post('/signout', logOutUser);
+app.post('/signout', auth, logOutUser);
 
 app.use('/users', auth, usersRouter);
 app.use('/movies', auth, moviesRouter);
 
-app.use('/*', (req, res, next) => next(new NotFoundError('Страница не найдена')));
+app.use('/*', auth, (req, res, next) => next(new NotFoundError('Страница не найдена')));
 
 app.use(errorLogger);
 
