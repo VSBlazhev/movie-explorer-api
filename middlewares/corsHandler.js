@@ -5,6 +5,7 @@ const allowedCors = [
   'https://blazhev.mesto.nomoredomains.monster',
   'https://movie-explorer-front-api.netlify.app',
   'http://movie-explorer-front-api.netlify.app/',
+  'https://level-3--movie-explorer-front-api.netlify.app/',
 ];
 
 module.exports = (req, res, next) => {
