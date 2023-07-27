@@ -6,6 +6,8 @@ const allowedCors = [
   'https://movie-explorer-front-api.netlify.app',
   'http://movie-explorer-front-api.netlify.app/',
   'https://level-3--movie-explorer-front-api.netlify.app/',
+  'http://blazhev.mov-exp-front.nomoreparties.sbs',
+  'https://blazhev.mov-exp-front.nomoreparties.sbs',
 ];
 
 module.exports = (req, res, next) => {
