@@ -11,6 +11,9 @@ function errHandler(err, req, res, next) {
   if (err.code === 11000) {
     return res.status(DB_ERROR).send({ message: 'Email уже используется' });
   }
+  if (err.code === 409) {
+    /* return */ throw new Error('Email уже используется')/* res.status(DB_ERROR).send({ message: 'Email уже используется' }); */
+  }
   if (err.name === 'CastError') {
     return res
       .status(WRONG_DATA)

@@ -1,7 +1,10 @@
 const allowedCors = [
   'http://localhost:3001',
+  'http://localhost:3000',
   'http://blazhev.mesto.nomoredomains.monster',
   'https://blazhev.mesto.nomoredomains.monster',
+  'https://movie-explorer-front-api.netlify.app',
+  'http://movie-explorer-front-api.netlify.app/',
 ];
 
 module.exports = (req, res, next) => {
