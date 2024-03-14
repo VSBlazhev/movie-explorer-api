@@ -8,5 +8,5 @@
 - Реализовано логирование
 
 ### Были испольpованы технологии:
--Express.JS
--MongoDB
+- Express.JS
+- MongoDB
